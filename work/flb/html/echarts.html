@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>echarts</title>
+	<link rel="stylesheet" type="text/css" href="../css/flb.css"/>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+	<div id="main" style="height:400px;width:800px;"></div>
+
+	<script src="../js/echarts/echarts.js"></script>
+	<script type="text/javascript">
+		require.config({
+			paths:{
+				echarts:"../js/echarts"
+			}
+		});
+
+		require(
+			[
+				'echarts',
+				'echarts/chart/bar',
+				'echarts/chart/line'
+			],
+			function(ec) {
+				var myCharts = ec.init(document.getElementById("main"));
+				var options = {
+					tooltip: {
+                        show: true
+                    },
+                    legend: {
+                        data:['销量']
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+                    series : [
+                        {
+                            "name":"销量",
+                            "type":"bar",
+                            "data":[5, 20, 40, 10, 10, 20]
+                        }
+                    ]
+				};
+
+				myCharts.setOption(options);
+			}
+		);
+	</script>
+</body>
+</html>
